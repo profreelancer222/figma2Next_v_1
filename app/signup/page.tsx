@@ -25,7 +25,7 @@ export default function Page() {
 								<div className='absolute pointer-events-none'>
 								</div>
 								<div className='flex'>
-									<input type='text' className="w-full mt-[10px] rounded-md border-2 px-[30px] font-['Rubik']" placeholder='Please Input here.' />
+									<input type='text' className="w-full mt-[10px] rounded-md border-2 px-[30px] font-['']" placeholder='Please Input here.' />
 									<Image src={search} className='h-[18px] w-[18px] mx-[8px] my-[14px] absolute' alt='search Image'/>
 								</div>
 
@@ -34,7 +34,7 @@ export default function Page() {
 						<div className='mt-[18px]'>
 							<div className='text-[14px]'>User Password</div>
 							<div className='flex'>
-								<input type='password' className="px-[20px] w-full mt-[10px] rounded-md border-2 font-['Rubik']" placeholder='Please Input here.' />
+								<input type='password' className="px-[20px] w-full mt-[10px] rounded-md border-2 font-['']" placeholder='Please Input here.' />
 							</div>
 						</div>
 					</div>

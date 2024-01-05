@@ -660,6 +660,12 @@ video {
 .font-\[\'Rubik\'\] {
   font-family: 'Rubik';
 }
+.font-\[\'\'\] {
+  font-family: '';
+}
+.font-\[\'iRubk\'\] {
+  font-family: 'iRubk';
+}
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
