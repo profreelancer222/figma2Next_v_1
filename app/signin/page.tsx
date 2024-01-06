@@ -2,8 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import coffeePicture from '../../assest/picture/coffee.png'
 import logo from '../../assest/picture/logo.png'
-import search from '../../assest/avgFile/search.svg'
-import eye from '../../assest/avgFile/eye.svg'
+import search from '../../assest/svgFile/search.svg'
+import eye from '../../assest/svgFile/eye.svg'
 
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';
