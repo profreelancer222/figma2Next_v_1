@@ -1,5 +1,4 @@
-import header from './header'
-
+import Hire from './hire'
 export default function Page() {
-    return header()
+    return  <Hire />
   }
