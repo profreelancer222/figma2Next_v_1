@@ -2,5 +2,6 @@
   "/not-found": "app/not-found.js",
   "/auth/signin/page": "app/auth/signin/page.js",
   "/auth/signup/page": "app/auth/signup/page.js",
-  "/job/page": "app/job/page.js"
+  "/job/page": "app/job/page.js",
+  "/job/hire/page": "app/job/hire/page.js"
 }

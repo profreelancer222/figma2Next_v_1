@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import coffeePicture from '../../../public/assest/picture/coffee.png'
-import logo from '../../../public/assest/picture/logo.png'
-import search from '../../../public/assest/svgFile/search.svg'
-import eye from '../../../public/assest/svgFile/eye.svg'
+import coffeePicture from '../../../public/assest/pictures/coffee.png'
+import logo from '../../../public/assest/pictures/logo.png'
+import search from '../../../public/assest/icons/search.svg'
+import eye from '../../../public/assest/icons/eye.svg'
 
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';

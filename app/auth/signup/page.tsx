@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import keyboard from '../../../public/assest/picture/keybord.png'
-import logo from '../../../public/assest/picture/logo.png'
-import search from '../../../public/assest/svgFile/search.svg'
+import keyboard from '../../../public/assest/pictures/keybord.png'
+import logo from '../../../public/assest/pictures/logo.png'
+import search from '../../../public/assest/icons/search.svg'
 
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';
