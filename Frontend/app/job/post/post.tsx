@@ -2,7 +2,7 @@ import Image from "next/image"
 import check from '../../../public/assest/icons/check.svg'
 export default function post() {
     return <div>
-        <div className="w-[80vw] h-[732px] p-8 mx-[10vw] bg-white rounded-2xl flex-col justify-start items-center gap-3 inline-flex">
+        <div className="w-[80vw] p-8 mx-[10vw] bg-white rounded-2xl flex-col justify-start items-center gap-3 inline-flex">
             <div className="self-stretch h-[1720px] p-6 rounded-lg border border-black border-opacity-10 flex-col justify-start items-start gap-3 flex">
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -11,7 +11,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -20,7 +20,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -29,7 +29,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -38,7 +38,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -47,7 +47,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -56,7 +56,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -65,7 +65,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -74,7 +74,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -83,7 +83,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -92,7 +92,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -101,7 +101,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -110,7 +110,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[18px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-end inline-flex">
@@ -141,7 +141,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -150,7 +150,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className=" h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-start gap-2.5 inline-flex  text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[107px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -180,7 +180,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -189,7 +189,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -198,7 +198,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[108px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -217,7 +217,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
                 <div className="self-stretch h-[57px] flex-col justify-start items-start gap-2 flex">
                     <div className="self-stretch justify-between items-center inline-flex">
@@ -226,7 +226,7 @@ export default function post() {
                             <div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">Required</div>
                         </div>
                     </div>
-                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-[1300px] text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
+                    <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
 
 

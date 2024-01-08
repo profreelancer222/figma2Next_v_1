@@ -11,7 +11,7 @@ import Image from 'next/image'
 import Hire from '../hire/hire'
 export default function content() {
     return <div className=''>
-        <div className="w-[80vw] h-[732px] p-6 mx-[10vw] bg-white rounded-2xl flex-col justify-start items-start gap-3 inline-flex">
+        <div className="w-[80vw] p-6 mx-[10vw] bg-white rounded-2xl flex-col justify-start items-start gap-3 inline-flex">
             <div className="self-stretch justify-start items-center gap-3 inline-flex">
                 <div className="w-6 h-6 px-1 py-[3px] justify-center items-center flex">
                     <Image className="w-4 h-[18px] relative" src={book} alt='book' />

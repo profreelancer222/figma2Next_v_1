@@ -1,5 +1,32 @@
 {
   "dependencies": {
-    "mongodb": "^6.3.0"
-  }
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3",
+    "nodemon": "^3.0.2",
+    "typescript": "^5.3.3",
+    "validator": "^13.11.0"
+  },
+  "scripts": {
+    "dev": "nodemon ./app.js",
+    "lint:fix": "eslint --fix --ext .js"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
+    "@typescript-eslint/parser": "^6.18.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-compat": "^4.2.0",
+    "eslint-plugin-react": "^7.33.2"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
