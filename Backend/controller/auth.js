@@ -22,13 +22,13 @@ const  logIn = async (req, res) => {
         if (isEmpty(email) || !validator.isEmail(email) || isEmpty(password)) {
             return res.sendStatus(400);
         }
-        const result = await User.findOne({email});
-        console.log(result, result.password, password)
+        try { const result = await User.findOne({email: email});
+                if (isEmpty(result) || result == null) {
+                    return res.sendStatus(404);
+                }
+            } catch(err) {console.log(err)}
 
-        if (isEmpty(result)) {
-            return res.sendStatus(404);
-        }
-        else if (result.password == password) {
+        if (result.password == password) {
                 const token = generateAccessToken({ email, password });
                 res.status(202).json({ token });
             }
