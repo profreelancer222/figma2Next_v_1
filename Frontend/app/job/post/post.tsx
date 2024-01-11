@@ -228,8 +228,6 @@ export default function post() {
                     </div>
                     <input className="h-8 px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-center gap-2.5 inline-flex w-full text-zinc-400 text-sm font-normal font-['Rubik']" placeholder="Please Input here."></input>
                 </div>
-
-
                 <button className="relative right-0 w-[125px] h-8 px-6 py-2 bg-indigo-900 rounded-lg justify-center items-center gap-2.5 inline-flex">
                     <Image src={check} alt='check' className="" />
                     <div className="text-slate-200 text-sm font-normal font-['Rubik'] capitalize">Submit</div>

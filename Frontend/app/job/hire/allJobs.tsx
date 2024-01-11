@@ -6,6 +6,7 @@ import avatar from '../../../public/assest/icons/avatar.svg'
 import money from '../../../public/assest/icons/money.svg'
 import note from '../../../public/assest/icons/note.svg'
 import previous from '../../../public/assest/icons/previous.svg'
+import Link from 'next/link'
 import next from '../../../public/assest/icons/next.svg'
 import Image from 'next/image'
 import Hire from '../hire/hire'
@@ -27,12 +28,12 @@ export default function content() {
                         <Image className="w-[18px] h-[18px] relative" src={filter} alt='search' />
                         <div className="grow shrink basis-0 text-zinc-400 text-sm font-normal font-['Rubik']">Filter</div>
                     </div>
-                    <div className="w-[168px] px-6 py-2 bg-indigo-900 rounded-lg justify-center items-center gap-2.5 flex">
+                    <Link href={'/job/post'}><button className="w-[168px] px-6 py-2 bg-indigo-900 rounded-lg justify-center items-center gap-2.5 flex">
                         <div className="w-5 h-5 pl-[3.33px] pr-[2.61px] pt-[1.67px] pb-[1.63px] justify-center items-center flex">
                             <Image className="w-[14.06px] h-[16.70px] relative" src={post} alt='post' />
                         </div>
                         <div className="text-slate-200 text-sm font-normal font-['Rubik'] capitalize">Post new job</div>
-                    </div>
+                    </button></Link>
                 </div>
             </div>
             <div className="self-stretch h-[584px] flex-col justify-start items-start flex">

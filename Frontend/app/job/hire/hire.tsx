@@ -14,18 +14,18 @@ export default function hire() {
                     </div>
                 </div>
                 <div className="justify-start items-center gap-2.5 inline-flex">
-                    <div className="w-[119px] px-6 py-2 bg-sky-700 rounded-lg justify-center items-center gap-2.5 flex">
+                    <button className="w-[119px] px-6 py-2 bg-sky-700 rounded-lg justify-center items-center gap-2.5 flex">
                         <div className="text-slate-200 text-sm font-normal font-['Rubik'] capitalize">Dashboard</div>
-                    </div>
-                    <div className="w-[103px] px-6 py-2 bg-slate-300 rounded-lg justify-center items-center gap-2.5 flex">
+                    </button>
+                    <button className="w-[103px] px-6 py-2 bg-slate-300 rounded-lg justify-center items-center gap-2.5 flex">
                         <div className="text-sky-700 text-sm font-normal font-['Rubik'] capitalize">My Jobs</div>
-                    </div>
-                    <div className="w-[118px] px-6 py-2 bg-slate-300 rounded-lg justify-center items-center gap-2.5 flex">
+                    </button>
+                    <button className="w-[118px] px-6 py-2 bg-slate-300 rounded-lg justify-center items-center gap-2.5 flex">
                         <div className="text-sky-700 text-sm font-normal font-['Rubik'] capitalize">Applicants</div>
-                    </div>
-                    <div className="w-[116px] px-6 py-2 bg-slate-300 rounded-lg justify-center items-center gap-2.5 flex">
+                    </button>
+                    <button className="w-[116px] px-6 py-2 bg-slate-300 rounded-lg justify-center items-center gap-2.5 flex">
                         <div className="text-sky-700 text-sm font-normal font-['Rubik'] capitalize">Interviews</div>
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>

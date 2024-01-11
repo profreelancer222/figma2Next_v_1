@@ -1,3 +1,4 @@
+import Page1 from './auth/signin/page'
 export default function Page() {
-  return <h1 className="text-3xl font-bold underline">Dashboard</h1>
+  return <Page1 />
 }

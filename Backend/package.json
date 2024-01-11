@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "body-parser": "^1.20.2",
+    "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
@@ -8,12 +9,16 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
     "nodemon": "^3.0.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "sequelize": "^6.35.2",
+    "sqlite3": "^5.1.7",
     "typescript": "^5.3.3",
     "validator": "^13.11.0"
   },
   "scripts": {
     "dev": "nodemon ./app.js",
-    "lint:fix": "eslint --fix --ext .js"
+    "lint": "eslint --fix --ext .tsx, .js"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.18.0",

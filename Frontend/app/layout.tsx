@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 
 // These styles apply to every route in the application
 import '../public/assest/cssFile/globals.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><ToastContainer />{children}</body>
     </html>
   )
 }

@@ -21,7 +21,5 @@
          "generator-star-spacing": [ "error", "both" ],
          "space-before-function-paren": [ "error", "always" ],
          "yield-star-spacing": [ "error", "both" ]
-      }
-    }
-    
+      } 
 }
