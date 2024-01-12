@@ -1,3 +1,6 @@
+import Page1 from './auth/signin/page'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Page() {
-  return <h1 className="text-3xl font-bold underline">Dashboard</h1>
+  return <><Page1 /></>
 }

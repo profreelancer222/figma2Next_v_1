@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require("mongoose");
 var bodyParser = require('body-parser')
 const router = require('./src/router');
+const sequelize = require('./config/database');
+const User = require('./models/user');
 
 const app = express();
 const cors = require("cors");
@@ -13,14 +15,13 @@ app.use(bodyParser.json());
 require('dotenv').config()
 
 //Check Mongod server
-mongoose
-  .connect(process.env.DB_PATH)
-  .then(() => {
-    console.log("Connected to MongoDB!");
-  })
-  .catch(() => {
-    console.error("Failed to connect MongoDB!");
-  });
+
+  try {
+    sequelize.sync({ force: false }); // { force: true } will drop existing tables
+    console.log('Database & tables created!');
+  } catch (error) {
+    console.error('Error creating database tables:', error);
+  }
 
   // open PORT 
 app.listen(process.env.PORT , () => {
@@ -30,6 +31,19 @@ app.listen(process.env.PORT , () => {
 //Serve Router
 app.get('/', (req, res) => {
   res.send('GET request to the homepage')
-})
+});
+
+// app.get('/auth/google',
+//   passport.authenticate('google', { scope:
+//       [ 'email', 'profile' ] }
+// ));
+
+// app.get( '/auth/google/callback',
+//     passport.authenticate( 'google', {
+//         successRedirect: '/auth/google/success',
+//         failureRedirect: '/auth/google/failure'
+// }));
+
+
 
 app.use("/api", router);

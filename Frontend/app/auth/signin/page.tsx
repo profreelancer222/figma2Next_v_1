@@ -1,69 +1,153 @@
+"use client";
 import Image from 'next/image'
 import Link from 'next/link'
+import Input from '../../../components/semicomponents/Input'
+import Button from '../../../components/semicomponents/Input'
 import coffeePicture from '../../../public/assest/pictures/coffee.png'
 import logo from '../../../public/assest/pictures/logo.png'
 import search from '../../../public/assest/icons/search.svg'
 import eye from '../../../public/assest/icons/eye.svg'
+import facebook from '../../../public/assest/icons/facebook.svg'
+import google from '../../../public/assest/icons/google.svg'
+import { test } from './basicdata'
+import { useEffect, useState } from 'react';
+import { Router } from "next/router";
+import { useCookies } from "react-cookie";
+import isEmpty from "is-empty";
+import axios from "axios";
+import qs from "qs";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import apiFactory from "../../../src/helper/apiFactory";
 
-import { FcGoogle } from 'react-icons/fc';
-import { FaFacebook } from 'react-icons/fa';
+import { GoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from '@react-oauth/google';
+import { useGoogleOneTapLogin } from '@react-oauth/google';
+import { googleLogout } from '@react-oauth/google';
+
+
 
 export default function Page() {
-	return (
-		<div className='bg-[#EBEBF4] h-screen grid place-items-center'>
-			<div className='bg-white p-[24px] rounded-lg flex flex-col md:flex-row gap-6 w-5/6 md:w-[721px] m-auto'>
-				<div className='md:w-[246px] w-1/3'>
-					<Image className='rounded-lg h-full object-cover' src={coffeePicture} alt='Login Image' />
-				</div>
-				<div className='md:w-[403px] w-2/3'>
-					<Image className='mt-6 w-[258px] m-auto' src={logo} alt='Logo image' />
-					<div className='mt-6 text-center font-semibold text-base text-[#0A50A4]'>Welcome to back</div>
-					<div className='mt-1 text-center font-normal text-xs text-[#B3B3B3]'>Sign in to continue</div>
-					<div className='mt-6'>
-						<div>
-							<div className='text-[14px]'>Email Address</div>
-							<div className='relative'>
-								<div className='absolute pointer-events-none'>
-								</div>
-								<div className='flex'>
-									<input type='text' className="w-full mt-[10px] rounded-md border-2 px-[30px] font-['']" placeholder='Please Input here.' />
-									<Image src={search} className='h-[18px] w-[18px] mx-[8px] my-[14px] absolute' alt='search Image'/>
-								</div>
+	const router = Router
+	const [cookies, setCookie] = useCookies(['jwtToken']);
 
+	const [type, setType] = useState(true); // type = false -> sign in page, true -> sign up
+	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("");
+
+	const logIn = async () => {
+
+		await axios.post(`http://localhost:8000/api/login`, qs.stringify({ email: email, password: password }))
+			.then(result => {
+				console.log(result.data);
+				localStorage.setItem("token", result.data.token);
+				toast((result.data.token) ? "success" : null)
+				toast(result.data.error)
+				location.href = "/job/hire"
+			})
+			.catch(
+				err => {
+					console.log(err.message)
+					toast(err.message)
+				}
+			)
+	}
+
+
+
+	useGoogleOneTapLogin({
+		onSuccess: credentialResponse => {
+		  console.log(credentialResponse);
+		},
+		onError: () => {
+		  console.log('Login Failed');
+		},
+	  });
+
+	useEffect(() => {
+		if (!isEmpty(cookies.jwtToken)) {
+			apiFactory.test(cookies.jwtToken)
+				.then(() => {
+					localStorage.setItem("token", cookies.jwtToken);
+					//router.push("/job/hire");
+				})
+				.catch(() => {
+					setCookie("jwtToken", null);
+					localStorage.removeItem("token");
+				});
+		}
+	}, [])
+
+	const googleLogin = useGoogleLogin({
+		onSuccess: tokenResponse => {
+			console.log(tokenResponse)
+			localStorage.setItem("token", tokenResponse.access_token);
+		}
+	  });
+
+
+	return (
+		<div className="w-full h-[100vh] bg-slate-200 justify-center items-center inline-flex"><ToastContainer />
+			<div className="w-[721px] h-[557px]">
+				<div className="w-[721px] h-[557px] self-center grow shrink basis-0 p-6 bg-white rounded-2xl shadow justify-center items-center gap-6 inline-flex">
+					<Image
+						className="self-stretch rounded-lg"
+						width={246}
+						height={509}
+						src={coffeePicture}
+						alt="Sign image"
+					/>
+					<div className="grow shrink basis-0 self-stretch pt-6 flex-col justify-start items-center gap-6 inline-flex">
+						<div className="w-[258px] h-7 justify-center items-center inline-flex">
+							<Image className='w-[258px] h-7 relative' src={logo} alt='Logo image' />
+						</div>
+						<div className="flex-col justify-start items-center gap-1 flex">
+							<div className="text-sky-700 text-base font-semibold font-['Rubik']">{"Welcome to back"}</div>
+							<div className="text-zinc-400 text-[10px] font-normal font-['Rubik']">{"Sign in to continue"}</div>
+						</div>
+						<div className="self-stretch h-[136px] flex-col justify-start items-center gap-[18px] flex">
+							<div className="self-stretch h-[59px] flex-col justify-start items-start gap-2.5 flex">
+								<div className="text-neutral-600 text-sm font-normal font-['Rubik']">Email Address</div>
+								<Input type="search" onChange={(value) => setEmail(value)} value={email} />
+							</div>
+							<div className="self-stretch h-[59px] flex-col justify-start items-start gap-2.5 flex">
+								<div className="text-neutral-600 text-sm font-normal font-['Rubik']">User Password</div>
+								<Input type="password" onChange={(value) => setPassword(value)} value={password} />
 							</div>
 						</div>
-						<div className='mt-[18px]'>
-							<div className='text-[14px]'>User Password</div>
-							<div className='flex'>
-							<input type='password' className="px-[20px] w-full mt-[10px] rounded-md border-2 font-['']" placeholder='Please Input here.' />
+						<button className="w-[403px] h-8 px-6 py-2 bg-indigo-900 rounded-lg justify-center items-center gap-2.5 inline-flex" onClick={logIn}>
+							<div className="text-slate-200 text-sm font-normal font-['Rubik'] capitalize">Login</div>
+						</button>
+						<div className="self-stretch justify-start items-center gap-3 inline-flex">
+							<div className="grow shrink basis-0 h-[0px] border border-zinc-400"></div>
+							<div className="text-zinc-400 text-sm font-normal font-['Rubik']">or</div>
+							<div className="grow shrink basis-0 h-[0px] border border-zinc-400"></div>
+						</div>
+						<div className="self-stretch h-[76px] flex-col justify-start items-start gap-3 flex">
+							<GoogleLogin
+								onSuccess={tokenResponse  => {
+									console.log(tokenResponse);
+								}}
+								onError={() => {
+									console.log('Login Failed111111111111111111111111111111111');
+								}}
+							/>
+							<button className="bg-white hover:shadow hover:cursor-pointer w-[100%] h-8 px-6 py-2 rounded-lg justify-center items-center gap-2.5 transition-all inline-flex border border-gray-300" onClick={() => googleLogin()}>
+								<Image
+									width={20}
+									height={20}
+									alt="Button Image"
+									src={facebook}
+								/>
+								<div className="text-indigo-900 text-sm font-normal font-['Rubik'] capitalize" >Facebook</div>
+							</button>
+						</div>
+						<div className="justify-center items-start gap-1 inline-flex">
+							<div className="text-neutral-600 text-sm font-normal font-['Rubik']">Don’t have an account?</div>
+							<div className="justify-center items-center gap-2.5 flex">
+								<Link className="text-blue-500 text-sm font-medium font-['Rubik'] underline" href="/auth/signup" >Sign up</Link>
 							</div>
 						</div>
-					</div>
-					<div className='my-6'>
-						<button type='submit' className='w-full py-2 px-6 rounded-lg text-[14px] text-center text-white bg-[#3B368D]'>
-							Login
-						</button>
-					</div>
-					<div className='flex'>
-						<hr className='flex-1 m-auto' />
-						<div className='flex-none mx-3'>or</div>
-						<hr className='flex-1 m-auto' />
-					</div>
-					<div className='my-6'>
-						<button className='w-full py-2 rounded-lg border-2 flex justify-center text-[14px]'>
-							<FcGoogle size={20} className='my-auto mr-[10px]' />
-							<span className='my-auto'>Google</span>
-						</button>
-						<button className='mt-3 w-full py-2 rounded-lg border-2 flex justify-center text-[14px]'>
-							<FaFacebook size={20} className='my-auto mr-[10px] text-[#1877F2]' />
-							<span className='my-auto'>Facebook</span>
-						</button>
-					</div>
-					<div className='text-center text-[14px]'>
-						Don't you have an account?{' '}
-						<Link className='text-[#4193F6] underline' href={'/auth/signup'}>
-							Sign up
-						</Link>
 					</div>
 				</div>
 			</div>
