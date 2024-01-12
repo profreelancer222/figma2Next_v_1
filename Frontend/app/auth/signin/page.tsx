@@ -20,6 +20,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import apiFactory from "../../../src/helper/apiFactory";
 
+import { GoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from '@react-oauth/google';
+import { useGoogleOneTapLogin } from '@react-oauth/google';
+import { googleLogout } from '@react-oauth/google';
+
+
+
 export default function Page() {
 	const router = Router
 	const [cookies, setCookie] = useCookies(['jwtToken']);
@@ -36,7 +43,7 @@ export default function Page() {
 				localStorage.setItem("token", result.data.token);
 				toast((result.data.token) ? "success" : null)
 				toast(result.data.error)
-				location.href="/job/hire"
+				location.href = "/job/hire"
 			})
 			.catch(
 				err => {
@@ -45,6 +52,17 @@ export default function Page() {
 				}
 			)
 	}
+
+
+
+	useGoogleOneTapLogin({
+		onSuccess: credentialResponse => {
+		  console.log(credentialResponse);
+		},
+		onError: () => {
+		  console.log('Login Failed');
+		},
+	  });
 
 	useEffect(() => {
 		if (!isEmpty(cookies.jwtToken)) {
@@ -59,6 +77,15 @@ export default function Page() {
 				});
 		}
 	}, [])
+
+	const googleLogin = useGoogleLogin({
+		onSuccess: tokenResponse => {
+			console.log(tokenResponse)
+			localStorage.setItem("token", tokenResponse.access_token);
+		}
+	  });
+
+
 	return (
 		<div className="w-full h-[100vh] bg-slate-200 justify-center items-center inline-flex"><ToastContainer />
 			<div className="w-[721px] h-[557px]">
@@ -97,16 +124,15 @@ export default function Page() {
 							<div className="grow shrink basis-0 h-[0px] border border-zinc-400"></div>
 						</div>
 						<div className="self-stretch h-[76px] flex-col justify-start items-start gap-3 flex">
-							<a href={`${process.env.SERVER_IP}/google`} className="bg-white hover:shadow hover:cursor-pointer w-[100%] h-8 px-6 py-2 rounded-lg justify-center items-center gap-2.5 transition-all inline-flex border border-gray-300">
-								<Image
-									width={20}
-									height={20}
-									alt="Button Image"
-									src={google}
-								/>
-								<div className="text-indigo-900 text-sm font-normal font-['Rubik'] capitalize" >Google</div>
-							</a>
-							<a href={`${process.env.SERVER_IP}/google`} className="bg-white hover:shadow hover:cursor-pointer w-[100%] h-8 px-6 py-2 rounded-lg justify-center items-center gap-2.5 transition-all inline-flex border border-gray-300">
+							<GoogleLogin
+								onSuccess={tokenResponse  => {
+									console.log(tokenResponse);
+								}}
+								onError={() => {
+									console.log('Login Failed111111111111111111111111111111111');
+								}}
+							/>
+							<button className="bg-white hover:shadow hover:cursor-pointer w-[100%] h-8 px-6 py-2 rounded-lg justify-center items-center gap-2.5 transition-all inline-flex border border-gray-300" onClick={() => googleLogin()}>
 								<Image
 									width={20}
 									height={20}
@@ -114,7 +140,7 @@ export default function Page() {
 									src={facebook}
 								/>
 								<div className="text-indigo-900 text-sm font-normal font-['Rubik'] capitalize" >Facebook</div>
-							</a>
+							</button>
 						</div>
 						<div className="justify-center items-start gap-1 inline-flex">
 							<div className="text-neutral-600 text-sm font-normal font-['Rubik']">Don’t have an account?</div>

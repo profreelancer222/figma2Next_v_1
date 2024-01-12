@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-
+import { GoogleOAuthProvider } from '@react-oauth/google';
 // These styles apply to every route in the application
 import '../public/assest/cssFile/globals.css'
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,8 +14,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    
     <html lang="en">
-      <body>{children}</body>
+      <body><GoogleOAuthProvider clientId="986706595817-k8m2oik51jbesdhclgs264hbqkrhkkc9.apps.googleusercontent.com">{children}</GoogleOAuthProvider></body>
     </html>
+    
   )
 }

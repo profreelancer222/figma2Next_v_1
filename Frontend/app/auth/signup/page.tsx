@@ -57,6 +57,9 @@ export default function Page() {
 				});
 		}
 	}, [])
+
+	
+	  
 	return (
 		<div className="w-full h-[100vh] bg-slate-200 justify-center items-center inline-flex"><ToastContainer />
 			<div className="w-[721px] h-[557px]">

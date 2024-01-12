@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import StringConstant from "../constants";
+import StringConstant from "./constants";
 import axios from "axios";
 import isEmpty from "is-empty";
 import qs from "qs";
