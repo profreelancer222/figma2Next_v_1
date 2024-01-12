@@ -40,6 +40,7 @@ const signUp = async (req, res) => {
     }
 }
 
+
 const logIn = async (req, res) => {
     // try {
     //     const { email, password } = req.body;
@@ -121,8 +122,18 @@ const isAuth = async (req, res, next) => {
             return res.status(403).json({ error: result.error });
         }
         req.user = result.data;
+        console.log(result.data)
         next();
         // return res.json(result);
+    } catch (err) {
+        res.sendStatus(500);
+        console.error(err);
+    }
+}
+
+const google = async (req, res) => {
+    try {
+        console.log(req)
     } catch (err) {
         res.sendStatus(500);
         console.error(err);
@@ -132,5 +143,6 @@ const isAuth = async (req, res, next) => {
 module.exports = {
     signUp,
     logIn,
-    isAuth
+    isAuth,
+    google
 };
