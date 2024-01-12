@@ -95,7 +95,7 @@ const logIn = async (req, res) => {
                 }
             }
             else {
-                return res.sendStatus(404);
+                return res.json({error: "Not Found"});
             }
         } catch (error) {
             console.error('Error find user:', error);
@@ -107,7 +107,30 @@ const logIn = async (req, res) => {
 
 }
 
+const isAuth = async (req, res, next) => {
+    try {
+        const authHeader = req.headers['authorization'];
+        const token = authHeader;
+
+        if (!token) {
+            return res.sendStatus(401);
+        }
+
+        const result = verifyAccessToken(token);
+        if (!result.success) {
+            return res.status(403).json({ error: result.error });
+        }
+        req.user = result.data;
+        next();
+        // return res.json(result);
+    } catch (err) {
+        res.sendStatus(500);
+        console.error(err);
+    }
+}
+
 module.exports = {
     signUp,
-    logIn
+    logIn,
+    isAuth
 };

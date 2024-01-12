@@ -17,7 +17,7 @@ import isEmpty from "is-empty";
 import axios from "axios";
 import qs from "qs";
 import { ToastContainer, toast } from 'react-toastify';
-
+import 'react-toastify/dist/ReactToastify.css';
 import apiFactory from "../../../src/helper/apiFactory";
 
 export default function Page() {
@@ -33,6 +33,7 @@ export default function Page() {
 		await axios.post(`http://localhost:8000/api/login`, qs.stringify({ email: email, password: password }))
 			.then(result => {
 				console.log(result.data);
+				localStorage.setItem("token", result.data.token);
 				toast((result.data.token) ? "success" : null)
 				toast(result.data.error)
 			})
@@ -58,7 +59,7 @@ export default function Page() {
 		}
 	}, [])
 	return (
-		<div className="w-full h-[100vh] bg-slate-200 justify-center items-center inline-flex">
+		<div className="w-full h-[100vh] bg-slate-200 justify-center items-center inline-flex"><ToastContainer />
 			<div className="w-[721px] h-[557px]">
 				<div className="w-[721px] h-[557px] self-center grow shrink basis-0 p-6 bg-white rounded-2xl shadow justify-center items-center gap-6 inline-flex">
 					<Image

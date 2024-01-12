@@ -1,6 +1,31 @@
+"use client"
 import Image from 'next/image'
 import userPlus from '../../../public/assest/icons/userPlus_1.svg'
+import { useEffect, useState } from 'react';
+import {isEmpty} from 'is-empty';
+import { sign } from 'crypto';
+import axios from 'axios';
 export default function hire() {
+
+    const [data, setData] = useState({})
+
+    const getJob = async () => {
+
+		await axios.get(`http://localhost:8000/api/getJob`)
+			.then(result => {
+					console.log(result.data)
+				})
+			.catch(err => {
+				console.log("error")
+			})
+
+	}
+
+    useEffect(()=> {
+        getJob()
+    }, [])
+
+
     return <div>
         <div className="w-[90vw] h-[184px] back pl-[10vw] ml-[32px] flex-col justify-start items-center gap-2.5 inline-flex" >
             <div className="self-stretch h-[120px] flex-col justify-center items-start gap-6 flex">

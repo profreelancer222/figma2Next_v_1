@@ -1,4 +1,6 @@
-const { DataTypes } = require('sequelize');
+const {
+  DataTypes
+} = require('sequelize');
 const sequelize = require('../config/database.js'); // Assuming you have a file for Sequelize setup
 
 const Job = sequelize.define('Job', {
@@ -34,15 +36,11 @@ const Job = sequelize.define('Job', {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  customerSupport: {
+  title: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  createdDate: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  expirationDate: {
+  description: {
     type: DataTypes.TEXT,
     allowNull: false,
   }

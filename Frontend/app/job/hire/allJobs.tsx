@@ -1,3 +1,4 @@
+"use client"
 import book from '../../../public/assest/icons/book.svg'
 import search from '../../../public/assest/icons/search.svg'
 import filter from '../../../public/assest/icons/filter.svg'
@@ -10,7 +11,36 @@ import Link from 'next/link'
 import next from '../../../public/assest/icons/next.svg'
 import Image from 'next/image'
 import Hire from '../hire/hire'
+import { useEffect, useState } from 'react';
+import { isEmpty } from 'is-empty';
+import { sign } from 'crypto';
+import axios from 'axios';
+
+
 export default function content() {
+
+
+    const [data, setData] = useState([])
+
+    const getJob = async () => {
+
+        await axios.get(`http://localhost:8000/api/getJob`)
+            .then(result => {
+                setData(result.data)
+                console.log(data)
+            })
+            .catch(err => {
+                console.log("error")
+            })
+
+    }
+
+    useEffect(() => {
+        getJob()
+    }, [])
+
+
+
     return <div className=''>
         <div className="w-[80vw] p-6 mx-[10vw] bg-white rounded-2xl flex-col justify-start items-start gap-3 inline-flex">
             <div className="self-stretch justify-start items-center gap-3 inline-flex">
@@ -36,7 +66,8 @@ export default function content() {
                     </button></Link>
                 </div>
             </div>
-            <div className="self-stretch h-[584px] flex-col justify-start items-start flex">
+            {data.map(item => (
+            <div className="self-stretch h-auto flex-col justify-start items-start flex">
                 <div className="self-stretch py-2 border-b border-black border-opacity-0 justify-start items-center gap-3 inline-flex">
                     <div className="w-10 h-10 bg-slate-200 rounded-[40px] justify-start items-start gap-2.5 flex">
                         <Image src={avatar} alt='avatar' />
@@ -44,7 +75,7 @@ export default function content() {
                     <div className="grow shrink basis-0 flex-col justify-start items-start gap-[5px] inline-flex">
                         <div className="self-stretch justify-start items-center gap-6 inline-flex">
                             <div className="grow shrink basis-0 h-6 justify-between items-center flex">
-                                <div className="grow shrink basis-0 text-neutral-600 text-xl font-normal font-['Rubik']">Looking for front end Engineer</div>
+                                <div className="grow shrink basis-0 text-neutral-600 text-xl font-normal font-['Rubik']">{item.title}</div>
                             </div>
                             <div className="justify-start items-start gap-2 flex">
                                 <div className="justify-start items-center gap-2 flex">
@@ -52,7 +83,7 @@ export default function content() {
                                         <Image src={money} alt='money' />
                                     </div>
                                     <div className="px-4 py-0.5 bg-zinc-400 rounded-2xl justify-center items-center gap-2.5 flex">
-                                        <div className="text-white text-xs font-normal font-['Rubik']">fixed 30$</div>
+                                        <div className="text-white text-xs font-normal font-['Rubik']">{item.salaryAmount}</div>
                                     </div>
                                 </div>
                             </div>
@@ -63,221 +94,12 @@ export default function content() {
                                     <Image className="w-3 h-[15px] relative" src={note} alt='note' />
                                 </div>
                             </div>
-                            <div className="grow shrink basis-0 text-zinc-400 text-xs font-light font-['Rubik']">We are currently seeking a talented and passionate frontend developer to join our team. As a frontend developer, you will be responsible for creating visually appealing and user-friendly interfaces that enhance the overall user experience of our web applications.</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="self-stretch py-2 border-b border-black border-opacity-0 justify-start items-center gap-3 inline-flex">
-                    <div className="w-10 h-10 bg-slate-200 rounded-[40px] border-2 border-slate-400 justify-start items-start gap-2.5 flex">
-                        <Image src={avatar} alt='avatar' />
-                    </div>
-                    <div className="grow shrink basis-0 flex-col justify-start items-start gap-[5px] inline-flex">
-                        <div className="self-stretch justify-start items-center gap-6 inline-flex">
-                            <div className="grow shrink basis-0 h-6 justify-between items-center flex">
-                                <div className="grow shrink basis-0 text-neutral-600 text-xl font-normal font-['Rubik']">Looking for front end Engineer</div>
-                            </div>
-                            <div className="justify-start items-start gap-2 flex">
-                                <div className="justify-start items-center gap-2 flex">
-                                    <div className="w-[18px] h-[18px] p-[2.25px] justify-center items-center flex">
-                                        <Image src={money} alt='money' />
-                                    </div>
-                                    <div className="px-4 py-0.5 bg-zinc-400 rounded-2xl justify-center items-center gap-2.5 flex">
-                                        <div className="text-white text-xs font-normal font-['Rubik']">fixed 30$</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="self-stretch justify-start items-start gap-2 inline-flex">
-                            <div className="py-0.5 justify-start items-start flex">
-                                <div className="w-[18px] h-[18px] px-[3px] py-[1.50px] justify-center items-center flex">
-                                    <Image className="w-3 h-[15px] relative" src={note} alt='note' />
-                                </div>
-                            </div>
-                            <div className="grow shrink basis-0 text-zinc-400 text-xs font-light font-['Rubik']">We are currently seeking a talented and passionate frontend developer to join our team. As a frontend developer, you will be responsible for creating visually appealing and user-friendly interfaces that enhance the overall user experience of our web applications.</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="self-stretch py-2 border-b border-black border-opacity-0 justify-start items-center gap-3 inline-flex">
-                    <div className="w-10 h-10 bg-slate-200 rounded-[40px] border-2 border-slate-400 justify-start items-start gap-2.5 flex">
-                        <Image src={avatar} alt='avatar' />
-                    </div>
-                    <div className="grow shrink basis-0 flex-col justify-start items-start gap-[5px] inline-flex">
-                        <div className="self-stretch justify-start items-center gap-6 inline-flex">
-                            <div className="grow shrink basis-0 h-6 justify-between items-center flex">
-                                <div className="grow shrink basis-0 text-neutral-600 text-xl font-normal font-['Rubik']">Back-end developer need.</div>
-                            </div>
-                            <div className="justify-start items-start gap-2 flex">
-                                <div className="justify-start items-center gap-2 flex">
-                                    <div className="w-[18px] h-[18px] p-[2.25px] justify-center items-center flex">
-                                        <Image src={money} alt='money' />
-                                    </div>
-                                    <div className="px-4 py-0.5 bg-zinc-400 rounded-2xl justify-center items-center gap-2.5 flex">
-                                        <div className="text-white text-xs font-normal font-['Rubik']">fixed 3000$</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="self-stretch justify-start items-start gap-2 inline-flex">
-                            <div className="py-0.5 justify-start items-start flex">
-                                <div className="w-[18px] h-[18px] px-[3px] py-[1.50px] justify-center items-center flex">
-                                    <Image className="w-3 h-[15px] relative" src={note} alt='note' />
-                                </div>
-                            </div>
-                            <div className="grow shrink basis-0 text-zinc-400 text-xs font-light font-['Rubik']">We are currently seeking a talented and passionate frontend developer to join our team. As a frontend developer, you will be responsible for creating visually appealing and user-friendly interfaces that enhance the overall user experience of our web applications.</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="self-stretch py-2 border-b border-black border-opacity-0 justify-start items-center gap-3 inline-flex">
-                    <div className="w-10 h-10 bg-slate-200 rounded-[40px] border-2 border-slate-400 justify-start items-start gap-2.5 flex">
-                        <Image src={avatar} alt='avatar' />
-                    </div>
-                    <div className="grow shrink basis-0 flex-col justify-start items-start gap-[5px] inline-flex">
-                        <div className="self-stretch justify-start items-center gap-6 inline-flex">
-                            <div className="grow shrink basis-0 h-6 justify-between items-center flex">
-                                <div className="grow shrink basis-0 text-neutral-600 text-xl font-normal font-['Rubik']">We are hiring WebGL developer</div>
-                            </div>
-                            <div className="justify-start items-start gap-2 flex">
-                                <div className="justify-start items-center gap-2 flex">
-                                    <div className="w-[18px] h-[18px] p-[2.25px] justify-center items-center flex">
-                                        <Image src={money} alt='money' />
-                                    </div>
-                                    <div className="px-4 py-0.5 bg-zinc-400 rounded-2xl justify-center items-center gap-2.5 flex">
-                                        <div className="text-white text-xs font-normal font-['Rubik']">hourly 50$</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="self-stretch justify-start items-start gap-2 inline-flex">
-                            <div className="py-0.5 justify-start items-start flex">
-                                <div className="w-[18px] h-[18px] px-[3px] py-[1.50px] justify-center items-center flex">
-                                    <Image className="w-3 h-[15px] relative" src={note} alt='note' />
-                                </div>
-                            </div>
-                            <div className="grow shrink basis-0 text-zinc-400 text-xs font-light font-['Rubik']">We are currently seeking a talented and passionate frontend developer to join our team. As a frontend developer, you will be responsible for creating visually appealing and user-friendly interfaces that enhance the overall user experience of our web applications.</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="self-stretch py-2 border-b border-black border-opacity-0 justify-start items-center gap-3 inline-flex">
-                    <div className="w-10 h-10 bg-slate-200 rounded-[40px] border-2 border-slate-400 justify-start items-start gap-2.5 flex">
-                        <Image src={avatar} alt='avatar' />
-                    </div>
-                    <div className="grow shrink basis-0 flex-col justify-start items-start gap-[5px] inline-flex">
-                        <div className="self-stretch justify-start items-center gap-6 inline-flex">
-                            <div className="grow shrink basis-0 h-6 justify-between items-center flex">
-                                <div className="grow shrink basis-0 text-neutral-600 text-xl font-normal font-['Rubik']">Need UI / UX designer</div>
-                            </div>
-                            <div className="justify-start items-start gap-2 flex">
-                                <div className="justify-start items-center gap-2 flex">
-                                    <div className="w-[18px] h-[18px] p-[2.25px] justify-center items-center flex">
-                                        <Image src={money} alt='money' />
-                                    </div>
-                                    <div className="px-4 py-0.5 bg-zinc-400 rounded-2xl justify-center items-center gap-2.5 flex">
-                                        <div className="text-white text-xs font-normal font-['Rubik']">fixed 30$</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="self-stretch justify-start items-start gap-2 inline-flex">
-                            <div className="py-0.5 justify-start items-start flex">
-                                <div className="w-[18px] h-[18px] px-[3px] py-[1.50px] justify-center items-center flex">
-                                    <Image className="w-3 h-[15px] relative" src={note} alt='note' />
-                                </div>
-                            </div>
-                            <div className="grow shrink basis-0 text-zinc-400 text-xs font-light font-['Rubik']">We are currently seeking a talented and passionate frontend developer to join our team. As a frontend developer, you will be responsible for creating visually appealing and user-friendly interfaces that enhance the overall user experience of our web applications.</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="self-stretch py-2 border-b border-black border-opacity-0 justify-start items-center gap-3 inline-flex">
-                    <div className="w-10 h-10 bg-slate-200 rounded-[40px] border-2 border-slate-400 justify-start items-start gap-2.5 flex">
-                        <Image src={avatar} alt='avatar' />
-                    </div>
-                    <div className="grow shrink basis-0 flex-col justify-start items-start gap-[5px] inline-flex">
-                        <div className="self-stretch justify-start items-center gap-6 inline-flex">
-                            <div className="grow shrink basis-0 h-6 justify-between items-center flex">
-                                <div className="grow shrink basis-0 text-neutral-600 text-xl font-normal font-['Rubik']">Looking for front end Engineer</div>
-                            </div>
-                            <div className="justify-start items-start gap-2 flex">
-                                <div className="justify-start items-center gap-2 flex">
-                                    <div className="w-[18px] h-[18px] p-[2.25px] justify-center items-center flex">
-                                        <Image src={money} alt='money' />
-                                    </div>
-                                    <div className="px-4 py-0.5 bg-zinc-400 rounded-2xl justify-center items-center gap-2.5 flex">
-                                        <div className="text-white text-xs font-normal font-['Rubik']">fixed 30$</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="self-stretch justify-start items-start gap-2 inline-flex">
-                            <div className="py-0.5 justify-start items-start flex">
-                                <div className="w-[18px] h-[18px] px-[3px] py-[1.50px] justify-center items-center flex">
-                                    <Image className="w-3 h-[15px] relative" src={note} alt='note' />
-                                </div>
-                            </div>
-                            <div className="grow shrink basis-0 text-zinc-400 text-xs font-light font-['Rubik']">We are currently seeking a talented and passionate frontend developer to join our team. As a frontend developer, you will be responsible for creating visually appealing and user-friendly interfaces that enhance the overall user experience of our web applications.</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="self-stretch py-2 border-b border-black border-opacity-0 justify-start items-center gap-3 inline-flex">
-                    <div className="w-10 h-10 bg-slate-200 rounded-[40px] border-2 border-slate-400 justify-start items-start gap-2.5 flex">
-                        <Image src={avatar} alt='avatar' />
-                    </div>
-                    <div className="grow shrink basis-0 flex-col justify-start items-start gap-[5px] inline-flex">
-                        <div className="self-stretch justify-start items-center gap-6 inline-flex">
-                            <div className="grow shrink basis-0 h-6 justify-between items-center flex">
-                                <div className="grow shrink basis-0 text-neutral-600 text-xl font-normal font-['Rubik']">Looking for front end Engineer</div>
-                            </div>
-                            <div className="justify-start items-start gap-2 flex">
-                                <div className="justify-start items-center gap-2 flex">
-                                    <div className="w-[18px] h-[18px] p-[2.25px] justify-center items-center flex">
-                                        <Image src={money} alt='money' />
-                                    </div>
-                                    <div className="px-4 py-0.5 bg-zinc-400 rounded-2xl justify-center items-center gap-2.5 flex">
-                                        <div className="text-white text-xs font-normal font-['Rubik']">fixed 30$</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="self-stretch justify-start items-start gap-2 inline-flex">
-                            <div className="py-0.5 justify-start items-start flex">
-                                <div className="w-[18px] h-[18px] px-[3px] py-[1.50px] justify-center items-center flex">
-                                    <Image className="w-3 h-[15px] relative" src={note} alt='note' />
-                                </div>
-                            </div>
-                            <div className="grow shrink basis-0 text-zinc-400 text-xs font-light font-['Rubik']">We are currently seeking a talented and passionate frontend developer to join our team. As a frontend developer, you will be responsible for creating visually appealing and user-friendly interfaces that enhance the overall user experience of our web applications.</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="self-stretch py-2 border-b border-black border-opacity-0 justify-start items-center gap-3 inline-flex">
-                    <div className="w-10 h-10 bg-slate-200 rounded-[40px] border-2 border-slate-400 justify-start items-start gap-2.5 flex">
-                        <Image src={avatar} alt='avatar' />
-                    </div>
-                    <div className="grow shrink basis-0 flex-col justify-start items-start gap-[5px] inline-flex">
-                        <div className="self-stretch justify-start items-center gap-6 inline-flex">
-                            <div className="grow shrink basis-0 h-6 justify-between items-center flex">
-                                <div className="grow shrink basis-0 text-neutral-600 text-xl font-normal font-['Rubik']">Back-end developer need.</div>
-                            </div>
-                            <div className="justify-start items-start gap-2 flex">
-                                <div className="justify-start items-center gap-2 flex">
-                                    <div className="w-[18px] h-[18px] p-[2.25px] justify-center items-center flex">
-                                        <Image src={money} alt='money' />
-                                    </div>
-                                    <div className="px-4 py-0.5 bg-zinc-400 rounded-2xl justify-center items-center gap-2.5 flex">
-                                        <div className="text-white text-xs font-normal font-['Rubik']">fixed 3000$</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="self-stretch justify-start items-start gap-2 inline-flex">
-                            <div className="py-0.5 justify-start items-start flex">
-                                <div className="w-[18px] h-[18px] px-[3px] py-[1.50px] justify-center items-center flex">
-                                    <Image className="w-3 h-[15px] relative" src={note} alt='note' />
-                                </div>
-                            </div>
-                            <div className="grow shrink basis-0 text-zinc-400 text-xs font-light font-['Rubik']">We are currently seeking a talented and passionate frontend developer to join our team. As a frontend developer, you will be responsible for creating visually appealing and user-friendly interfaces that enhance the overall user experience of our web applications.</div>
+                            <div className="grow shrink basis-0 text-zinc-400 text-xs font-light font-['Rubik']">{item.description}</div>
                         </div>
                     </div>
                 </div>
             </div>
+            ))}
             <div className="self-stretch h-8 flex-col justify-start items-center gap-2.5 flex">
                 <div className="justify-start items-start gap-4 inline-flex">
                     <button className="w-9 p-2 bg-white rounded-lg border border-indigo-900 justify-center items-center gap-2.5 flex">

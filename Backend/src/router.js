@@ -11,6 +11,7 @@ router.get('/', (req, res) =>{
 
 router.post('/signup', authController.signUp);
 router.post('/login', authController.logIn);
-router.post("/postjob", jobController.postJob);
+router.post("/postjob",  jobController.postJob);
+router.get("/getjob", jobController.getJob);
 
 module.exports = router;

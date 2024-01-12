@@ -58,7 +58,7 @@ export default function Page() {
 		}
 	}, [])
 	return (
-		<div className="w-full h-[100vh] bg-slate-200 justify-center items-center inline-flex">
+		<div className="w-full h-[100vh] bg-slate-200 justify-center items-center inline-flex"><ToastContainer />
 			<div className="w-[721px] h-[557px]">
 				<div className="w-[721px] h-[557px] self-center grow shrink basis-0 p-6 bg-white rounded-2xl shadow justify-center items-center gap-6 inline-flex">
 					<Image
