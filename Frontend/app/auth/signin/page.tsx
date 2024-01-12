@@ -11,7 +11,7 @@ import facebook from '../../../public/assest/icons/facebook.svg'
 import google from '../../../public/assest/icons/google.svg'
 import { test } from './basicdata'
 import { useEffect, useState } from 'react';
-import { useRouter } from "next/router";
+import { Router } from "next/router";
 import { useCookies } from "react-cookie";
 import isEmpty from "is-empty";
 import axios from "axios";
@@ -21,7 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import apiFactory from "../../../src/helper/apiFactory";
 
 export default function Page() {
-	//const router = useRouter(); 
+	const router = Router
 	const [cookies, setCookie] = useCookies(['jwtToken']);
 
 	const [type, setType] = useState(true); // type = false -> sign in page, true -> sign up
@@ -36,6 +36,7 @@ export default function Page() {
 				localStorage.setItem("token", result.data.token);
 				toast((result.data.token) ? "success" : null)
 				toast(result.data.error)
+				location.href="/job/hire"
 			})
 			.catch(
 				err => {

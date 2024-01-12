@@ -115,7 +115,7 @@ export default function content() {
                         <div className="text-neutral-600 text-sm font-normal font-['Rubik'] capitalize">3</div>
                     </button>
                     <button className="w-9 p-2 bg-white rounded-lg border border-indigo-900 justify-center items-center gap-2.5 flex">
-                        <Image src={previous} alt='previous' className="w-5 h-5 relative" />
+                        <Image src={next} alt='next' className="w-5 h-5 relative" />
                     </button>
                 </div>
             </div>
