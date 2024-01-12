@@ -66,7 +66,7 @@ export default function content() {
                     </button></Link>
                 </div>
             </div>
-            {data.map(item => (
+            {data.map((item: any ) => (
             <div className="self-stretch h-auto flex-col justify-start items-start flex">
                 <div className="self-stretch py-2 border-b border-black border-opacity-0 justify-start items-center gap-3 inline-flex">
                     <div className="w-10 h-10 bg-slate-200 rounded-[40px] justify-start items-start gap-2.5 flex">
