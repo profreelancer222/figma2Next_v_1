@@ -45,11 +45,13 @@ export default function post() {
 		axios.defaults.headers.common['authorization'] = window.localStorage.getItem("token");
 		await axios.post(`http://localhost:8000/api/postjob`, qs.stringify(getValue()))
 			.then(result => {
-				console.log(result.data);
-				toast("success")
+				//alert(result.data);
+				toast("success");
+                location.href='/job/hire'
 			})
 			.catch(
 				err => {
+                    //alert(err.message)
 					console.log(err.message)
 					toast("error")
 				}
@@ -150,10 +152,10 @@ export default function post() {
                     <textarea onChange={e => { setdescription(e.target.value) }} className="self-stretch h-[83px] px-4 py-2 bg-white rounded-lg border border-gray-300 justify-start items-start gap-2.5 inline-flex" placeholder="Please Input here.">
                     </textarea>
                 </div>
-                <Link href={'/job/hire'}><button className="relative right-0 w-[125px] h-8 px-6 py-2 bg-indigo-900 rounded-lg justify-center items-center gap-2.5 inline-flex" onClick={onSubmit}>
+                <button className="relative right-0 w-[125px] h-8 px-6 py-2 bg-indigo-900 rounded-lg justify-center items-center gap-2.5 inline-flex" onClick={onSubmit}>
                     <Image src={check} alt='check' className="" />
                     <div className="text-slate-200 text-sm font-normal font-['Rubik'] capitalize">Submit</div>
-                </button></Link>
+                </button>
             </div>
         </div>
     </div>

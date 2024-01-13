@@ -30,6 +30,7 @@ import { googleLogout } from '@react-oauth/google';
 export default function Page() {
 	const router = Router
 	const [cookies, setCookie] = useCookies(['jwtToken']);
+	const [user, setUser] = useState("");
 
 	const [type, setType] = useState(true); // type = false -> sign in page, true -> sign up
 	const [password, setPassword] = useState("");
@@ -43,7 +44,8 @@ export default function Page() {
 				localStorage.setItem("token", result.data.token);
 				toast((result.data.token) ? "success" : null)
 				toast(result.data.error)
-				location.href = "/job/hire"
+				if(result.data.token) 
+					location.href = "/job/hire"
 			})
 			.catch(
 				err => {
@@ -53,16 +55,48 @@ export default function Page() {
 			)
 	}
 
+	const googleLoginMiddleware = async () => {
+		 axios.defaults.headers.common['authorization'] = user;
+			//console.log(user.access_token);
+			await axios
+			  .get(
+				`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user}`,
+				{
+				  headers: {
+					Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+					Accept: "application/json",
+				  },
+				}
+			  )
+			  .then((res) => {
+				console.log(res.data);
+				location.href="/job/hire";
+			  })
+			  .catch((err) => console.log(err));
+	}
 
 
 	useGoogleOneTapLogin({
 		onSuccess: credentialResponse => {
-		  console.log(credentialResponse);
+			console.log(credentialResponse);
 		},
 		onError: () => {
-		  console.log('Login Failed');
+			console.log('Login Failed');
 		},
-	  });
+	});
+
+	const googleLogIn = useGoogleLogin({
+		onSuccess: (codeResponse: any) => {
+			setUser(codeResponse.access_token);
+		//	console.log(user.access_token)
+			googleLoginMiddleware()
+			console.log("codeResponse", codeResponse)
+			localStorage.setItem("token", codeResponse.access_token);
+		},
+		onError: (error) => console.log("Login Failed:", error)
+	});
+
+
 
 	useEffect(() => {
 		if (!isEmpty(cookies.jwtToken)) {
@@ -77,15 +111,6 @@ export default function Page() {
 				});
 		}
 	}, [])
-
-	const googleLogin = useGoogleLogin({
-		onSuccess: tokenResponse => {
-			console.log(tokenResponse)
-			localStorage.setItem("token", tokenResponse.access_token);
-		}
-	  });
-
-
 	return (
 		<div className="w-full h-[100vh] bg-slate-200 justify-center items-center inline-flex"><ToastContainer />
 			<div className="w-[721px] h-[557px]">
@@ -124,15 +149,15 @@ export default function Page() {
 							<div className="grow shrink basis-0 h-[0px] border border-zinc-400"></div>
 						</div>
 						<div className="self-stretch h-[76px] flex-col justify-start items-start gap-3 flex">
-							<GoogleLogin
-								onSuccess={tokenResponse  => {
+							<GoogleLogin width="400px"
+								onSuccess={tokenResponse => {
 									console.log(tokenResponse);
 								}}
 								onError={() => {
 									console.log('Login Failed111111111111111111111111111111111');
 								}}
 							/>
-							<button className="bg-white hover:shadow hover:cursor-pointer w-[100%] h-8 px-6 py-2 rounded-lg justify-center items-center gap-2.5 transition-all inline-flex border border-gray-300" onClick={() => googleLogin()}>
+							<button className="bg-white hover:shadow hover:cursor-pointer w-[100%] h-8 px-6 py-2 rounded-lg justify-center items-center gap-2.5 transition-all inline-flex border border-gray-300" onClick={() => googleLogIn()}>
 								<Image
 									width={20}
 									height={20}

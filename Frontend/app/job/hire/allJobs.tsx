@@ -37,7 +37,7 @@ export default function content() {
 
     useEffect(() => {
         getJob()
-    }, [])
+    }, []) 
 
 
 
