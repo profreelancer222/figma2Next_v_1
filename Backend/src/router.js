@@ -11,7 +11,7 @@ router.get('/', (req, res) =>{
 
 router.post('/signup', authController.signUp);
 router.post('/login', authController.logIn);
-router.post('/google', authController.google);
+router.post('/googlelogin', authController.google);
 router.post("/postjob",   jobController.postJob);
 router.get("/getjob", jobController.getJob);
 

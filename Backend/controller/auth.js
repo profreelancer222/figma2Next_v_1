@@ -83,8 +83,8 @@ const logIn = async (req, res) => {
             if (!(result === null )) {
                 if (result.password == password) {
                     const token = generateAccessToken({
-                        email: email
-
+                        email: email,
+                        password: password
                     });
                     res.status(202).json({
                         token
@@ -133,7 +133,21 @@ const isAuth = async (req, res, next) => {
 
 const google = async (req, res) => {
     try {
-        console.log(req)
+        const authHeader = req.headers['authorization'];
+        const token = authHeader;
+        console.log(token);
+
+        if (!token) {
+            return res.sendStatus(401);
+        }
+
+        const result = verifyAccessToken(token);
+        if (!result.success) {
+            return res.status(403).json({ error: result.error });
+        }
+        req.user = result.data;
+        res.json(result.data)
+        // return res.json(result);
     } catch (err) {
         res.sendStatus(500);
         console.error(err);
